@@ -3,9 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EyeGazer</title>
+    <link rel="stylesheet" href="eyegazerStyles.css"> <!-- Link to the CSS file -->
+
 </head>
-<body>
-    
+<body bgcolor="black">
+    <div id="calibration-container" style="z-index: 100;"></div>
+
+    <div class="backcolor_webgazer_team_vandus">
+        <div class="head_webgazer_team_vandus">
+            <div class="h1_webgazer_team_vandus">Eye Gazer</div>
+            <div class="switch_webgazer_team_vandus">
+                <input type="checkbox" id="toggle_webgazer_team_vandus">
+                <label for="toggle_webgazer_team_vandus" class="slider_webgazer_team_vandus"></label>
+            </div>
+        </div> 
+            <div id="recalibrateOption_webgazer_team_vandus" class="option_webgazer_team_vandus">
+                <span class="stop-icon_webgazer_team_vandus" style="display: none;"></span> Recalibrate
+            </div>
+                        <div class=" option_webgazer_team_vandus">Text Select</div>
+        <div class="info_webgazer_team_vandus">EyeGazer is a Chrome extension that allows hands-free web browsing using eye movements.</div>
+    </div>
 </body>
+<script src="webgazer.js"></script>
+<script src="background.js"></script>
+<script type="module">
+    import { recalibrate } from "./Lib/recalibration.js";
+    import { startGazeClick } from "./Lib/clickFunction.js";
+
+    // Disable WebGazer's video feed (optional for background operation)
+    webgazer.showVideo(false);
+    const recalibrateOption = document.getElementById('recalibrateOption_webgazer_team_vandus');
+    if(recalibrateOption){
+        recalibrateOption.addEventListener('click',function() {
+        if(this.classList.contains('selected_webgazer_team_vandus')){
+            
+            document.getElementById('calibration-container').style.display="none";
+        }
+        else{
+            recalibrate();
+            document.getElementById('calibration-container').style.display = "block";
+        }
+     
+    })
+    }
+    
+    // Start gaze click tracking after calibration
+    // function enableGazeClickTracking() {
+    //     webgazer.setGazeListener((data, elapsedTime) => {
+    //         if (data == null) return;
+
+    //         const x = data.x; // Gaze X-coordinate
+    //         const y = data.y; // Gaze Y-coordinate
+
+    //         const elementAtGaze = document.elementFromPoint(x, y);
+    //         if (elementAtGaze && elementAtGaze.tagName !== 'BODY') {
+    //             elementAtGaze.classList.add('gaze-hover');
+
+    //             // Remove hover effect after 500ms
+    //             setTimeout(() => {
+    //                 elementAtGaze.classList.remove('gaze-hover');
+    //             }, 500);
+
+    //             // Trigger a click after 1.5 seconds of gaze
+    //             setTimeout(() => {
+    //                 elementAtGaze.click();
+    //             }, 1500);
+    //         }
+    //     }).begin();
+    // }
+
+    // Start calibration and gaze click feature on page load
+    recalibrate()
+
+
+    // Recalibration option in the main header section
+    // document.getElementById('recalibrateOption_webgazer_team_vandus').addEventListener('click', function() {
+    //     recalibrate().then(enableGazeClickTracking); // Trigger recalibration and resume gaze tracking
+    // });
+</script>
 </html>

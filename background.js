@@ -1,0 +1,1 @@
+/* Script related to the basic functionality of index.*/

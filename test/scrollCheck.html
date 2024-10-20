@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EyeGaze Scroll</title>
+    <style>
+        body {
+            height: 2000px; /* To simulate a scrollable page */
+            font-family: Arial, sans-serif;
+        }
+        #scroll-notification {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scroll using EyeGaze</h1>
+    <p>Look at the top or bottom of the screen to scroll the page.</p>
+    
+    <div id="scroll-notification">Looking to scroll...</div>
+    <script src="../webgazer.js"></script>
+    <script src="../Lib/ScrollFunction.js"></script>
+    <script src="../Lib/recalibration.js"></script>
+    <script type="module" src="../contentScript.js"></script>
+
+    <script type="module">
+            import { recalibrate } from "./Lib/recalibration.js";
+            import { startGazeClick } from "./Lib/clickFunction.js";
+
+            recalibrate();
+
+    </script>
+</body>
+</html>

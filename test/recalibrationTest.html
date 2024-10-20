@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EyeGazer Calibration</title>
+    <style>
+        .calibration-point {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        #calibration-instructions {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="calibration-instructions">Click on each red dot 5 times to complete calibration.</div>
+    <div id="calibration-container" style="z-index: 1000;"></div>
+
+    <script src="webgazer.js" type="text/javascript"></script>
+    <script src="Lib/recalibration.js" type="module"></script>
+    <script type="module">
+        import {recalibrate} from "./Lib/recalibration.js";
+        //Turn off the video 
+        // Initialize WebGazer
+        webgazer.setGazeListener(function(data, elapsedTime) {
+            if (data == null) return;
+            var x = data.x;
+            var y = data.y;
+            console.log("Gaze detected at: ", x, y);
+        }).begin();
+        // Recalibrate when the user presses a button or key
+        document.body.addEventListener('keydown', function (e) {
+            if (e.key === 'r') { // Press 'R' to recalibrate
+                recalibrate();
+            }
+        });
+
+        // Start initial calibration
+        recalibrate();
+        webgazer.showVideo(true);
+
+    </script>
+</body>
+</html>

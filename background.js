@@ -1,3 +1,17 @@
+(()=>{// Create a new div element
+const calibrationContainer = document.createElement('div');
+
+// Set the ID and styles for the calibration container
+calibrationContainer.id = 'calibration-container';
+calibrationContainer.style.zIndex = '100'; // Set z-index
+calibrationContainer.style.position = 'absolute'; // Set position if needed
+calibrationContainer.style.width = '200px'; // Set width (optional)
+calibrationContainer.style.height = '200px'; // Set height (optional)
+calibrationContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // Set background color (optional)
+
+// Append the calibration container to the body
+document.body.appendChild(calibrationContainer);
+
 document.addEventListener('DOMContentLoaded', function () {
     // Toggle switch functionality
     const toggleWebGazer = document.getElementById('toggle_webgazer_team_vandus');
@@ -28,4 +42,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-});
+});})

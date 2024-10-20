@@ -16,12 +16,12 @@
       "tabs"               
     ],
     "background": {
-      "service_worker": "background.js"  
+      "service_worker": "service.js"  
     },
     "content_scripts": [
       {
         "matches": ["<all_urls>"],       
-        "js": ["contentScript.js"],      
+        "js": ["contentScript.js","background.js"],      
         "css": ["eyegazerStyles.css"]   
       }
     ],
@@ -47,7 +47,7 @@
     },
     "web_accessible_resources": [
       {
-        "resources": ["icon.png", "eyegazerStyles.css"], 
+        "resources": ["icon.png", "eyegazerStyles.css","Lib/recalibration.js","Lib/clickFunction.js","webgazer.js","contentScript.js"], 
 
         "matches": ["*://*/*"]
       }

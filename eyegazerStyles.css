@@ -121,4 +121,65 @@
 }
 #calibration-container{
     position: relative;
+}        
+#scroll-notification {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}body {
+  height: 2000px; /* To simulate a scrollable page */
+  font-family: Arial, sans-serif;
+}.clickable {
+  width: 100px;
+  height: 50px;
+  background-color: lightblue;
+  margin: 50px;
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Add a visible indicator to show active gaze */
+.gaze-hover {
+  background-color: yellow !important;
+}.clickable {
+  width: 100px;
+  height: 50px;
+  background-color: lightblue;
+  margin: 50px;
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Add a visible indicator to show active gaze */
+.gaze-hover {
+  background-color: yellow !important;
+}
+
+/* Calibration circle */
+.calibration-point {
+  width: 20px;
+  height: 20px;
+  background-color: lightcoral;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Calibration instructions */
+#calibration-instructions {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
 }

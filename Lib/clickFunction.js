@@ -13,6 +13,7 @@ function startGazeClick() {
         const element = document.elementFromPoint(xprediction, yprediction);
 
         if (element && element.classList.contains('clickable')) {
+            console.log("hey")
             if (currentlyHoveredElement !== element) {
                 resetGaze();
                 currentlyHoveredElement = element;

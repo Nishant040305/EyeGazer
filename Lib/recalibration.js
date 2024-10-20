@@ -23,6 +23,10 @@ const startCalibration=(maxClicksPerPoint,PointsOfCalibration)=>{
             }
         }
     }
+    //create calibration-container div
+    const container = document.createElement('div');
+    container.id = 'calibration-container';
+    document.body.append(container)
     const calibrationContainer = document.getElementById('calibration-container');
     calibrationContainer.innerHTML = ''; // Clear previous points
 
